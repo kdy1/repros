@@ -2,9 +2,11 @@ use anyhow::Result;
 use glob::glob;
 use std::path::PathBuf;
 
+const PATTERN: &str = "./cli/**/__tests__/**";
+
 fn main() -> Result<()> {
     {
-        let values = glob("**/__tests__/**")?;
+        let values = glob(PATTERN)?;
         dbg!(&values);
 
         for value in values {
@@ -13,7 +15,7 @@ fn main() -> Result<()> {
     }
 
     {
-        let pattern: Vec<PathBuf> = glob("**/__tests__/**")?.filter_map(|p| p.ok()).collect();
+        let pattern: Vec<PathBuf> = glob(PATTERN)?.filter_map(|p| dbg!(p).ok()).collect();
 
         dbg!(&pattern);
     }
