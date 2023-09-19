@@ -2,7 +2,7 @@ use anyhow::Result;
 use glob::glob;
 use std::path::PathBuf;
 
-const PATTERN: &str = "./cli/**/__tests__/**";
+const PATTERN: &str = "./cli/**/__tests__/**/*.ts";
 
 fn main() -> Result<()> {
     {
